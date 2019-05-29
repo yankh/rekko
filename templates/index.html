@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rekko - Face Recognition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+	<section id="home">
+		<div class="container">
+            <div class="center">
+                <img id="main-logo" src="/static/img/logo1.png">
+            </div>
+            <div id="features" class="row center">
+            	<div class="col l6">
+                	  <img id="feature-upload-img" src="/static/img/upload.png">
+                	  <h2 id="feature-upload-txt">uploader une photo</h2>
+					  <input id="feature-upload-input" type='file' class="hide"/>
+            	</div>
+            	<div class="col l6">
+                	<img src="/static/img/webcam.png">
+                	<h2>ouvrir la webcam</h2>
+            	</div>
+            </div>
+        </div>
+	</section>
+
+	<section id="process" class="hide">
+		<div class="container">
+			<div id="header" class="row">
+				<div class="col l3 left">
+            		<span class="go-back">
+            			<img src="/static/img/return.png">
+            			<span> Retour</span>
+            		</span>
+				</div>
+				<div class="col l6 center">
+                	<img id="main-logo" src="/static/img/logo2.png">
+            	</div>
+				<div class="col l3 right">
+				</div>
+        	</div>
+            <div id="content" class="row center">
+            	<div id="uploaded-img" class="col l6"></div>
+                <div class="col l5 offset-l1">
+                	<h2>Personnes détéctées</h2>
+	            	<div id="results-img">
+	                	<div class="row">
+		                	<div class="col l3"><img src="/static/img/matoub.png"></div>
+		                	<div class="col l6"><h3>Arslan Mouloudi</h3><h4>Taux: 0.857525</h4></div>	
+	                	</div>
+	                	<div class="row">
+		                	<div class="col l3"><img src="/static/img/2pac.png"></div>
+		                	<div class="col l6"><h3>Arslan Mouloudi</h3><h4>Taux: 0.857525</h4></div>	
+	                	</div>
+	                	<div class="row">
+		                	<div class="col l3"><img src="/static/img/matoub.png"></div>
+	            			<!-- Modal Trigger -->
+		                	<div class="col l6"><h3>Inconnu</h3><h5 class="modal-trigger" href="#modal1">Ajouter à la base ?</h5></div>	
+	                	</div>
+	            	</div>
+            	</div>
+            </div>
+        </div>
+	</section>
+	
+
+	<div id="footer" class="row center">
+		<h1>un projet de master informatique visuelle - usthb, alger - 2019</h1>
+	</div>
+
+
+	 <!-- Modal Structure -->
+	 <div id="modal1" class="modal">
+	   <div class="modal-content">
+	   	<div class="row">
+			<div class="col l4 center">
+				<img src="/static/img/tarantino.png">
+			</div>
+			<div class="col l8">
+				<div class="advices">
+					<img id="add-icon" src="/static/img/add-img.png">
+					<p>Conseils : Ajouter le plus d'images possible avec des positions et éclairages différents (chaque image ne doit contenir qu'un seul visage).</p>
+				</div>
+			</div>
+			<input type="file" multiple id="feature-upload-multiple-input" class="hide">
+		</div>	
+	   	<div id="flname" class="row">
+			<div class="col 12">
+				<div class="input-field col s12">
+          			<input id="last_name" type="text" class="validate" value="Quentin Tarantino">
+          			<label for="last_name">Entrez le nom et prénom</label>
+        		</div>
+			</div>
+		</div>
+	   </div>
+	   <div class="modal-footer">
+	   	<div class="row">
+			<div class="col l4">
+				<h4>Cette personne existe déjà ?</h4>
+			</div>
+			<div class="col l8 right">
+	     		<a id="abort" href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
+	     		<a id="add" href="#!" class="modal-close waves-effect waves-green btn-flat">Ajouter</a>
+			</div>
+		</div>	
+	   </div>
+	 </div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script src="/static/js/script.js"></script>
+	<script>
+		// initialization
+    	$('.modal').modal();
+		
+		$("#go-back").click(function () {
+			$('#process').addClass('hide');
+			$('#home').removeClass('hide');
+		});
+	</script>
+</body>
+</html>

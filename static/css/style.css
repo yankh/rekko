@@ -1,0 +1,380 @@
+
+/*~~~~~ Rekko Website Style ~~~~~*/
+:root {
+    --light: #F1F3F5;
+    --dark: #212529;
+    --gray: #747B81;
+    --blue: #7e81ea;
+    --green: #40e1c5;
+}
+
+@font-face {
+    font-family: 'Gelion';
+    src: url(/static/fonts/Gelion-Regular.ttf);
+}
+
+
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: #000; 
+}
+::-webkit-scrollbar-thumb {
+    background: var(--gray); 
+}
+
+
+html{
+    height: 100%; 
+    sans-serif;
+}
+body{
+    height: 100%;
+    font-family: 'Gelion';
+    background-color: var(--light);
+    color: var(--dark);
+}
+.container{
+    width: 90% !important;
+    max-width: 1400px
+}
+section{
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  height: 100%;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.right{
+  text-align: right;
+}
+.center{
+  text-align: center;
+}
+.left{
+  text-align: left;
+}
+/* Header */
+#main-logo{
+  width: 150px;
+  margin-top: 5vh
+}
+#header{
+  padding-top: 5vh
+}
+#header #main-logo{
+  width: 250px;
+  margin-top: 0vh
+}
+#header .rounded{
+  color: var(--gray);
+  border: 2px solid var(--gray);
+  margin-top: 0px;
+  margin-left: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px
+}
+/* Home */
+#features{
+  margin-top: 28vh;
+}
+#features img{
+  transition: 300ms;
+  transform: scale(1);
+  cursor: pointer;
+  width: 120px
+}
+#features img:hover{
+  transition: 300ms;
+  transform: scale(1.1);
+}
+#features h2{
+  font-size: 22px;
+  margin-top: 5vh;
+  cursor: pointer;
+}
+
+
+/* Process */
+#content{
+  padding-top: 10vh
+}
+#uploaded-img{
+  height: 50vh;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#content h2{
+  font-size: 26px;
+  text-align: left;
+  font-weight: 800;
+  margin-left: 10px 
+}
+#results-img{
+  text-align: left;
+  height: 45vh;
+  overflow: auto;
+}
+#results-img .row{
+  margin-bottom: 0px;
+  width: 100%
+}
+#results-img img{
+  width: 100px;
+}
+#results-img h3{
+  font-size: 24px;
+  margin: 5px;
+  margin-top: 30px;
+  text-transform: capitalize;
+}
+#results-img h4{
+  font-size: 20px;
+  margin: 5px;
+  color: var(--gray)
+}
+#results-img h5{
+  font-size: 20px;
+  margin: 5px;
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Footer */
+#footer{
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  margin-bottom: 0px
+}
+
+#footer h1{
+  font-size: 13px;
+  margin-bottom: 0px;
+  color: var(--gray)
+}
+
+/* Util */
+.go-back{
+  cursor: pointer;
+}
+.go-back img{
+  width: 25px;
+}
+.go-back span{
+  margin-left: 10px;
+  font-size: 18px
+}
+
+/* Modal */
+.modal{
+  width: 50%;
+  top: 18% !important;
+  padding: 40px 0px;
+  border-radius: 15px
+}
+.modal .modal-content{
+  padding-left: 0px
+}
+.modal-content img{
+  width: 170px
+}
+.advices{
+  text-align: center;
+  height: 170px;
+  border: 3px solid rgb(116,123,129,.2);
+  padding: 0px 30px;
+  border-radius: 15px;
+  border-style: dashed;
+  cursor: pointer;
+}
+.advices #add-icon{
+  width: 40px;
+  padding-top: 50px;
+  opacity: .25;
+  border-radius: 15px
+}
+.advices p{
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  line-height: 20px;
+  color: var(--gray);
+  opacity: .6;
+}
+.advices img{
+  width: 70px;
+  padding: 5px;
+  padding-top: 12px
+}
+
+.modal-content #flname div{
+  padding-left: 5px !important;
+}
+.modal-content #flname{
+  padding-left: 60px;
+  padding-top: 40px
+}
+label{
+  font-size: 18px;
+  left: 5px !important;
+}
+.modal-footer{
+  padding-left: 60px !important
+}
+.modal-footer h4{
+  font-size: 16px;
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: left;
+  padding-top: 10px
+}
+.modal-footer .right{
+  padding-right: 30px 
+}
+.modal-footer a{
+  border-radius: 30px;
+  padding: 0px 20px;
+  margin-left: 30px !important;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: 600
+}
+
+.modal-footer #add{
+  border: 2px solid var(--blue);
+  color: var(--blue);
+
+}
+
+.modal-footer #abort{
+  border: 2px solid var(--dark);
+}
+
+input.valid[type=text]:not(.browser-default), input[type=text]:not(.browser-default){
+  border-bottom: 0px !important;
+  font-size: 25px;
+}
+
+/* Login page */
+#login-form{
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.rounded{
+  border: 2px solid var(--blue);
+  border-radius: 30px;
+  padding: 0px 20px;
+  margin-top: 65px;
+  margin-left: 30px !important;
+  cursor: pointer;
+  background-color: transparent;
+  color: var(--blue)
+}
+
+
+
+/* Adding page*/
+#adding h2{
+  font-size: 28px;
+  margin-top: 80px;
+  margin-left: 50px
+}
+
+#adding #content{
+  padding-top: 20px
+}
+
+#adding .advices{
+  height: 250px;
+  margin-bottom: 50px 
+}
+
+#adding .advices #add-icon {
+    width: 80px;
+    padding-top: 80px;
+}
+
+#adding .advices p {
+  width: 50%
+}
+
+
+/* Adding page*/
+#parameters h2{
+  font-size: 28px;
+  margin-top: 80px;
+  margin-left: 50px;
+}
+
+#parameters h3{
+  font-size: 26px;
+  margin-top: 50px;
+  margin-left: 30px;
+  text-align: left;
+  opacity: .9
+}
+
+#parameters h4{
+  font-size: 22px;
+  color: var(--blue);
+  text-decoration: underline;
+  cursor: pointer;
+  text-align: left;
+  padding-top: 80px;
+  margin-left: 40px;
+}
+
+#parameters ul li{
+  display: inline-block;
+  font-size: 25px;
+  margin: 25px 50px 0px 0px;
+  line-height: 23px;
+  color: var(--gray);
+  opacity: .7;
+  text-align: center;
+  transition: 300ms;
+  cursor: pointer;
+}
+
+#parameters ul li:hover{
+  color: var(--gray);
+  opacity: 1;
+  transition: 300ms
+}
+
+#parameters ul li span{
+  font-size: 50px
+}
+
+#parameters #threshold li{
+  font-size: 24px;
+  margin-right: 35px;
+}
+
+
+
+
+
+
+
+
