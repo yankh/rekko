@@ -12,7 +12,7 @@ def logout():
 @app.route('/', methods = ['POST'])
 def login():
     if request.method == 'POST' and 'login' in request.form:
-        if (request.form['password'] == "p") and (request.form['username'] == "u"):
+        if (request.form['password'] == "popo") and (request.form['username'] == "admin"):
             return render_template('admin.html')
         else:
             return render_template('login.html', wrong=True)
