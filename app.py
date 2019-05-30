@@ -3,10 +3,25 @@ from flask import Flask, render_template, request, url_for, redirect, jsonify, s
 
 app = Flask(__name__)
 
-# Website main page
+#Logout page displaying
 @app.route('/')
-def landing():
-    return render_template('admin.html')
+def logout():
+    return render_template('login.html')
+
+# Login page displaying
+@app.route('/', methods = ['POST'])
+def login():
+    if request.method == 'POST' and 'login' in request.form:
+        if (request.form['password'] == "p") and (request.form['username'] == "u"):
+            return render_template('admin.html')
+        else:
+            return render_template('login.html', wrong=True)
+
+
+# #Setting
+# @app.route('/')
+# def setting():
+#     return render_template('login.html')
 
 
 

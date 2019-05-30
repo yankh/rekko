@@ -13,17 +13,22 @@
             </div>
             <div id="login-form" class="row">
             	<div class="col s6 offset-s3">
+                  <form action="{{url_for('login')}}" method="post">
 	            	<div class="input-field col s12">
-	          			<input id="last_name" type="text" class="validate" value="Quentin Tarantino">
+	          			<input id="last_name" name="username" type="text" class="validate" value="">
 	          			<label for="last_name">Pseudo</label>
 	        		</div>
 	        		<div class="input-field col s12">
-	          			<input id="last_name" type="text" class="validate" value="Quentin Tarantino">
+	          			<input id="last_name" name="password" type="password" class="validate" value="">
 	          			<label for="last_name">Mot de passe</label>
 	        		</div>
 	        		<div class="input-field col s12 center">
-	        			<a class="waves-effect waves-light btn rounded">Connexion</a>
+                        <button class="waves-effect waves-light btn rounded" type="submit" name="login">Connexion</button>
 	        		</div>
+                    {%if wrong%}
+                        <span>passe or username wrong</span>
+                    {% endif %}
+                  </form>
         		</div>
             </div>
         </div>

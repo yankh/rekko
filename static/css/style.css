@@ -98,7 +98,7 @@ section{
 
 /* Process */
 #content{
-  padding-top: 10vh
+  padding-top: 5vh
 }
 #uploaded-img{
   height: 50vh;
@@ -284,7 +284,7 @@ input.valid[type=text]:not(.browser-default), input[type=text]:not(.browser-defa
   border: 2px solid var(--blue);
   border-radius: 30px;
   padding: 0px 20px;
-  margin-top: 65px;
+  margin-top: 2vh;
   margin-left: 30px !important;
   cursor: pointer;
   background-color: transparent;
@@ -296,7 +296,7 @@ input.valid[type=text]:not(.browser-default), input[type=text]:not(.browser-defa
 /* Adding page*/
 #adding h2{
   font-size: 28px;
-  margin-top: 80px;
+  margin-top: 5vh;
   margin-left: 50px
 }
 
@@ -305,24 +305,24 @@ input.valid[type=text]:not(.browser-default), input[type=text]:not(.browser-defa
 }
 
 #adding .advices{
-  height: 250px;
-  margin-bottom: 50px 
+  height: 30vh;
+  margin-bottom: 5vh 
 }
 
 #adding .advices #add-icon {
     width: 80px;
-    padding-top: 80px;
+    padding-top: 5vh;
 }
 
 #adding .advices p {
-  width: 50%
+  width: 55%
 }
 
 
 /* Adding page*/
 #parameters h2{
   font-size: 28px;
-  margin-top: 80px;
+  margin-top: 5vh;
   margin-left: 50px;
 }
 
@@ -340,7 +340,7 @@ input.valid[type=text]:not(.browser-default), input[type=text]:not(.browser-defa
   text-decoration: underline;
   cursor: pointer;
   text-align: left;
-  padding-top: 80px;
+  padding-top: 5vh;
   margin-left: 40px;
 }
 
@@ -368,7 +368,7 @@ input.valid[type=text]:not(.browser-default), input[type=text]:not(.browser-defa
 
 #parameters #threshold li{
   font-size: 24px;
-  margin-right: 35px;
+  margin-right: 30px;
 }
 
 
