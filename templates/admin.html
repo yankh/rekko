@@ -21,7 +21,7 @@
                 	  <h2 id="feature-upload-txt">uploader une photo</h2>
 					  <input id="feature-upload-input" type='file' class="hide"/>
             	</div>
-            	<div class="col l3">
+            	<div id="open-cam" class="col l3">
                 	<img src="/static/img/webcam.png">
                 	<h2>ouvrir la webcam</h2>
             	</div>
@@ -160,7 +160,26 @@
 			</div>
         </div>
 	</section>
-
+	<section id="video" class="hide">
+		<div class="container">
+            <div id="header" class="row">
+				<div class="col l3 left">
+            		<span class="go-back">
+            			<img src="/static/img/return.png">
+            			<span> Retour</span>
+            		</span>
+				</div>
+				<div class="col l6 center">
+                	<img id="main-logo" src="/static/img/logo2.png">
+            	</div>
+				<div class="col l3 right">
+	        		<a class="rounded" href="{{ url_for('logout') }}">Déconnecter</a>
+				</div>
+        	</div>
+    	<h1>Video Streaming Demonstration</h1>
+    	<img src="{{ url_for('video_feed') }}">
+    </div>
+	</section>
 	<div id="footer" class="row center">
 		<h1>un projet de master informatique visuelle - usthb, alger - 2019</h1>
 	</div>
@@ -215,7 +234,10 @@
 			$('#parameters').addClass('hide');
 			$('#adding').addClass('hide');
 			$('#process').addClass('hide');
+			$('#video').addClass('hide');
+
 			$('#home').removeClass('hide');
+
 		});
 
 		$("#open-db-add").click(function () {
@@ -229,7 +251,11 @@
 			$('#adding').addClass('hide');
 			$('#home').addClass('hide');
 		});
-
+		$("#open-cam").click(function () {
+			$('#parameters').addClass('hide');
+			$('#video').removeClass('hide');
+			$('#home').addClass('hide');
+		});
 		
 	</script>
 </body>

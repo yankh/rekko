@@ -12,8 +12,18 @@
     font-family: 'Gelion';
     src: url(/static/fonts/Gelion-Regular.ttf);
 }
-
-
+@font-face {
+    font-family: 'Gelion_bold';
+    src: url(/static/fonts/Gelion-Bold.ttf);
+}
+@font-face {
+    font-family: 'Gelion_semib';
+    src: url(/static/fonts/Gelion-SemiBold.ttf);
+}
+@font-face {
+    font-family: 'Gelion_light';
+    src: url(/static/fonts/Gelion-Light.ttf);
+}
 ::-webkit-scrollbar {
     width: 4px;
 }
@@ -32,6 +42,23 @@ html{
 body{
     height: 100%;
     font-family: 'Gelion';
+    background-color: var(--light);
+    color: var(--dark);
+}
+h2{
+    height: 100%;
+    font-family: 'Gelion_semib' !important ;
+    background-color: var(--light);
+    color: var(--dark);
+    font-size: 30px;
+    margin-top: 90px;
+    margin-left: 50px;
+    letter-spacing: -1px;
+
+}
+.btn{
+    height: 100%;
+    font-family: 'Gelion_light';
     background-color: var(--light);
     color: var(--dark);
 }
