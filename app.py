@@ -49,6 +49,7 @@ app = Flask(__name__)
 
 detector = dlib.get_frontal_face_detector()
 video = cv2.VideoCapture(0)
+print('hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh {}'.format(video))
 ##yanis front impl
 #Logout page displaying
 @app.route('/')
@@ -76,6 +77,11 @@ def login():
 
 ##end
 
+# @app.route('/video',methods = ['POST'])
+# def video():
+#     #import
+#     #from templates.nomdefichier import *
+
 
 
 
@@ -84,7 +90,11 @@ def index():
     """Video streaming home page."""
     return render_template('webcam.html')
 
-def gen():
+@app.route('/video/<string:path>')
+def video(path):
+    return render_template('video.html',path)
+
+def gen(path=None):
     """Video streaming generator function."""
     while True:
         rval, frame = video.read()
@@ -92,26 +102,30 @@ def gen():
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         rects = detector(gray, 1)
         for rect in rects:
-	        x, y, w, h=rect_to_bb(rect)
-	        visage=frame[y:y+h,x:x+w]
-	        text,p=predictframe(visage)
-	        #print(text,'/',p)
-	        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-	        cv2.putText(frame,text[0]+'/'+str(p), 
-	                    (x,y-5), 
-	                    font, 
-	                    fontScale,
-	                    fontColor,
-	                    lineType)
+            x, y, w, h=rect_to_bb(rect)
+            visage=frame[y:y+h,x:x+w]
+            text,p=predictframe(visage)
+            #print(text,'/',p)
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.putText(frame,text[0]+'/'+str(p), 
+                        (x,y-5), 
+                        font, 
+                        fontScale,
+                        fontColor,
+                        lineType)
         cv2.imwrite('t.jpg', frame)
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
-
-
+                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
+    
 @app.route('/video_feed')
 def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
+
+@app.route('/video_feed_local/<string:path>')
+def video_feed_local(path):
+    """Video streaming route. Put this in the src attribute of an img tag."""
+    return Response(gen(path=None),mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
 if __name__ == '__main__':
