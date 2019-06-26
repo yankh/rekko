@@ -20,6 +20,10 @@
                 	  <img id="feature-upload-img" src="/static/img/upload.png">
                 	  <h2 id="feature-upload-txt">uploader une photo</h2>
 					  <input id="feature-upload-input" type='file' class="hide"/>
+				</div>
+				<div id="open-video" class="col l3">
+                	<img src="/static/img/webcam.png">
+                	<h2>Uploader une vidéo</h2>
             	</div>
             	<div id="open-cam" class="col l3">
                 	<img src="/static/img/webcam.png">
@@ -180,6 +184,28 @@
     	<img src="{{ url_for('video_feed') }}">
     </div>
 	</section>
+
+	<section id="local" class="hide">
+		<div class="container">
+            <div id="header" class="row">
+				<div class="col l3 left">
+            		<span class="go-back">
+            			<img src="/static/img/return.png">
+            			<span> Retour</span>
+            		</span>
+				</div>
+				<div class="col l6 center">
+                	<img id="main-logo" src="/static/img/logo2.png">
+            	</div>
+				<div class="col l3 right">
+	        		<a class="rounded" href="{{ url_for('logout') }}">Déconnecter</a>
+				</div>
+        	</div>
+    	<h1>Video Uploading Demonstration</h1>
+    	<img src="{{ url_for('video_local') }}">
+    </div>
+	</section>
+	
 	<div id="footer" class="row center">
 		<h1>un projet de master informatique visuelle - usthb, alger - 2019</h1>
 	</div>
@@ -235,7 +261,7 @@
 			$('#adding').addClass('hide');
 			$('#process').addClass('hide');
 			$('#video').addClass('hide');
-
+			$('#local').addClass('hide');	
 			$('#home').removeClass('hide');
 
 		});
@@ -244,17 +270,29 @@
 			$('#parameters').addClass('hide');
 			$('#adding').removeClass('hide');
 			$('#home').addClass('hide');
+			$('#local').addClass('hide');
 		});
 
 		$("#open-sys-param").click(function () {
 			$('#parameters').removeClass('hide');
 			$('#adding').addClass('hide');
 			$('#home').addClass('hide');
+			$('#local').addClass('hide');
 		});
+
 		$("#open-cam").click(function () {
 			$('#parameters').addClass('hide');
 			$('#video').removeClass('hide');
 			$('#home').addClass('hide');
+			$('#local').addClass('hide');
+		});
+
+		
+		$("#open-video").click(function () {
+			$('#parameters').addClass('hide');
+			$('#video').addClass('hide');
+			$('#home').addClass('hide');
+			$('#local').removeClass('hide');
 		});
 		
 	</script>

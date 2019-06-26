@@ -5,6 +5,7 @@ import keras
 import numpy as np
 import pickle
 import dlib
+from utils.images import Images
 
 model_final=keras.models.load_model('D:/MIV/PFE/Application Interface/m.h5')
 model_final._make_predict_function()
@@ -65,26 +66,13 @@ def login():
             return render_template('login.html', wrong=True)
 
 
-# #Setting
-# @app.route('/')
-# def setting():
-#     return render_template('login.html')
-
-
-
-
-
-##end
-
-
-
 
 @app.route('/webcam')
 def index():
     """Video streaming home page."""
     return render_template('webcam.html')
 
-def gen():
+def gen(local=False):
     """Video streaming generator function."""
     while True:
         rval, frame = video.read()
@@ -92,20 +80,55 @@ def gen():
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         rects = detector(gray, 1)
         for rect in rects:
-	        x, y, w, h=rect_to_bb(rect)
-	        visage=frame[y:y+h,x:x+w]
-	        text,p=predictframe(visage)
-	        #print(text,'/',p)
-	        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
-	        cv2.putText(frame,text[0]+'/'+str(p), 
-	                    (x,y-5), 
-	                    font, 
-	                    fontScale,
-	                    fontColor,
-	                    lineType)
+            x, y, w, h=rect_to_bb(rect)
+            visage=frame[y:y+h,x:x+w]
+            text,p=predictframe(visage)
+            #print(text,'/',p)
+            cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+            cv2.putText(frame,text[0]+'/'+str(p), 
+                        (x,y-5), 
+                        font, 
+                        fontScale,
+                        fontColor,
+                        lineType)
         cv2.imwrite('t.jpg', frame)
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
+                b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
+                    
+def gen_local():
+    cap = cv2.VideoCapture('C:/m.mp4')
+    print(cap)
+    while(cap.isOpened()):
+        ret, frame = cap.read()
+        if ret==True:
+            #frame = cv2.flip(frame, -1)
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            rects = detector(gray, 0)
+            for rect in rects:
+            
+                x, y, w, h=rect_to_bb(rect)
+        
+                visage=frame[y:y+h,x:x+w]
+                text,p=predictframe(visage)
+                cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+                cv2.putText(frame,text[0]+'/'+str(p), 
+                            (x,y-5), 
+                            font, 
+                            fontScale,
+                            fontColor,
+                            lineType)
+            cv2.imwrite('p.jpg', frame)
+            yield (b'--frame\r\n'
+                    b'Content-Type: image/jpeg\r\n\r\n' + open('p.jpg', 'rb').read() + b'\r\n')
+
+def gen_local_image(path='.'):
+    img = Images(path)
+    frame = img.predict()
+    cv2.imwrite('t.jpg', frame)
+    yield (b'--frame\r\n'
+            b'Content-Type: image/jpeg\r\n\r\n' + open('t.jpg', 'rb').read() + b'\r\n')
+
 
 
 @app.route('/video_feed')
@@ -113,6 +136,13 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/video_local')
+def video_local():
+    return Response(gen_local(),mimetype='multipart/x-mixed-replace; boundary=frame')
 
+@app.route('/image_local/<string:path>')
+def image_local(path):
+    return Response(gen_local_image(path),mimetype='multipart/x-mixed-replace; boundary=frame')
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=True)
+
